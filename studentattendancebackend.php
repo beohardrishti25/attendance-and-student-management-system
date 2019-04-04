@@ -1,11 +1,13 @@
 <?php
-	$dbconnect=mysqli_connect('localhost','root','','dbms_project');
+    if(isset($_POST['submit1']))
+	{$dbconnect=mysqli_connect('localhost','root','','dbms_project');
 	if(!$dbconnect)
 		echo'error';
 	else
 	{
 		//$class="select * from sem".$_GET['sem']." join student on scholar_no=scholar_number where semester=".$_GET['sem'];
-		$class="select * from sem".$_GET['sem']. " join student on scholar_no=scholar_number where semester=".$_GET['sem'];
+		session_start();
+		$class="select * from sem".$_GET['sem']. " join student3 on scholarno=scholar_number where semester=".$_GET['sem'];
 		echo $class;
 		$sql1=mysqli_query($dbconnect,$class);
 		$array1=mysqli_fetch_assoc($sql1);
@@ -46,7 +48,10 @@ $i=0;
 	;
 }
 
-    
+    header("refresh:0; url=teacher_profile.php?page=back");
 
-
+}
+else{
+   echo "not set";
+}
 ?>
