@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="icon" href="http://localhost/phpmyadmin/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="http://localhost/phpmyadmin/favicon.ico" type="image/x-icon">
+    <title>phpMyAdmin</title>
+    <link rel="stylesheet" type="text/css" href="sql_data/phpmyadmin.css">
+    <link rel="stylesheet" type="text/css" href="sql_data/print.css" media="print">
+    <meta name="robots" content="noindex,nofollow">
+<script type="text/javascript">
+try {
+    // can't access this if on a different domain
+    var topdomain = top.document.domain;
+    // double-check just for sure
+    if (topdomain != self.document.domain) {
+        alert("Redirecting...");
+        top.location.replace(self.document.URL.substring(0, self.document.URL.lastIndexOf("/")+1));
+    }
+}
+catch(e) {
+    alert("Redirecting... (error: " + e);
+    top.location.replace(self.document.URL.substring(0, self.document.URL.lastIndexOf("/")+1));
+}
+</script>
+<script src="sql_data/mootools.js" type="text/javascript"></script>
+<script src="sql_data/functions.js" type="text/javascript"></script>
+<script src="sql_data/functions.js" type="text/javascript"></script>
+<script src="sql_data/tooltip.js" type="text/javascript"></script>
+<script type="text/javascript">
+// <![CDATA[
+// Updates the title of the frameset if possible (ns4 does not allow this)
+if (typeof(parent.document) != 'undefined' && typeof(parent.document) != 'unknown'
+    && typeof(parent.document.title) == 'string') {
+    parent.document.title = 'localhost / localhost / dbms_project / sem3 | phpMyAdmin 3.0.1.1';
+}
+
+var PMA_messages = new Array();
+PMA_messages['strFormEmpty'] = 'Missing value in the form!';
+PMA_messages['strNotNumber'] = 'This is not a number!';
+PMA_messages['strNoDropDatabases'] = '';
+PMA_messages['strDoYouReally'] = 'Do you really want to ';
+PMA_messages['strDropDatabaseStrongWarning'] = 'You are about to DESTROY a complete database!';
+window.parent.addEvent(window, 'load', PMA_TT_init);
+// ]]>
+</script>
+    <meta name="OBGZip" content="true">
+        <!--[if IE 6]>
+    <style type="text/css">
+    /* <![CDATA[ */
+    html {
+        overflow-y: scroll;
+    }
+    /* ]]> */
+    </style>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="serverinfo">
+<a href="http://localhost/phpmyadmin/main.php?token=bf875dce8892826b43529120d8ba109c" class="item">        <img class="icon" src="sql_data/s_host.png" alt="" width="16" height="16"> 
+Server: localhost</a>
+        <span class="separator"><img class="icon" src="sql_data/item_ltr.png" alt="-" width="5" height="9"></span>
+<a href="http://localhost/phpmyadmin/db_structure.php?db=dbms_project&amp;token=bf875dce8892826b43529120d8ba109c" class="item">        <img class="icon" src="sql_data/s_db.png" alt="" width="16" height="16"> 
+Database: dbms_project</a>
+        <span class="separator"><img class="icon" src="sql_data/item_ltr.png" alt="-" width="5" height="9"></span>
+<a href="http://localhost/phpmyadmin/tbl_structure.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c" class="item">        <img class="icon" src="sql_data/s_tbl.png" alt="" width="16" height="16"> 
+Table: sem3</a>
+</div><div id="topmenucontainer">
+<ul id="topmenu">
+<li class="active"><a class="tabactive" href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php&amp;pos=0"><img class="icon" src="sql_data/b_browse.png" alt="" width="16" height="16">Browse</a></li>
+<li><a class="tab" href="http://localhost/phpmyadmin/tbl_structure.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php"><img class="icon" src="sql_data/b_props.png" alt="" width="16" height="16">Structure</a></li>
+<li><a class="tab" href="http://localhost/phpmyadmin/tbl_sql.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php"><img class="icon" src="sql_data/b_sql.png" alt="" width="16" height="16">SQL</a></li>
+<li><a class="tab" href="http://localhost/phpmyadmin/tbl_select.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php"><img class="icon" src="sql_data/b_search.png" alt="" width="16" height="16">Search</a></li>
+<li><a class="tab" href="http://localhost/phpmyadmin/tbl_change.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php"><img class="icon" src="sql_data/b_insrow.png" alt="" width="16" height="16">Insert</a></li>
+<li><a class="tab" href="http://localhost/phpmyadmin/tbl_export.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php&amp;single_table=true"><img class="icon" src="sql_data/b_tblexport.png" alt="" width="16" height="16">Export</a></li>
+<li><a class="tab" href="http://localhost/phpmyadmin/tbl_import.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php"><img class="icon" src="sql_data/b_tblimport.png" alt="" width="16" height="16">Import</a></li>
+<li><a class="tab" href="http://localhost/phpmyadmin/tbl_operations.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php"><img class="icon" src="sql_data/b_tblops.png" alt="" width="16" height="16">Operations</a></li>
+<li><a class="tabcaution" href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php&amp;reload=1&amp;sql_query=TRUNCATE+TABLE+%60sem3%60&amp;zero_rows=Table+sem3+has+been+emptied&amp;goto=tbl_structure.php" onclick="return confirmLink(this, 'TRUNCATE TABLE `sem3`')"><img class="icon" src="sql_data/b_empty.png" alt="" width="16" height="16">Empty</a></li>
+<li><a class="tabcaution" href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php&amp;reload=1&amp;purge=1&amp;sql_query=DROP+TABLE+%60sem3%60&amp;goto=db_structure.php&amp;zero_rows=Table+sem3+has+been+dropped" onclick="return confirmLink(this, 'DROP TABLE `sem3`')"><img class="icon" src="sql_data/b_deltbl.png" alt="" width="16" height="16">Drop</a></li>
+</ul>
+<div class="clearfloat"></div></div>
+
+<script type="text/javascript">
+//<![CDATA[
+window.parent.updateTableTitle('dbms_project.sem3', ' (5)');
+//]]>
+</script>
+<div align="left">
+<div class="success">Showing rows 0 - 4 (5 total, Query took 0.0003 sec)</div><code class="sql"><span class="syntax"><span class="syntax_alpha syntax_alpha_reservedWord">SELECT</span>  <span class="syntax_punct">*</span> <br><span class="syntax_alpha syntax_alpha_reservedWord">FROM</span>  <span class="syntax_quote syntax_quote_backtick">`sem3`</span> <br><span class="syntax_alpha syntax_alpha_reservedWord">ORDER</span>  <span class="syntax_alpha syntax_alpha_reservedWord">BY</span>  <span class="syntax_quote syntax_quote_backtick">`scholar_number`</span>  <span class="syntax_alpha syntax_alpha_reservedWord">ASC</span> <span class="syntax_white syntax_white_newline"></span><br><span class="syntax_alpha syntax_alpha_reservedWord">LIMIT</span> <span class="syntax_digit syntax_digit_integer">0</span> <span class="syntax_punct syntax_punct_listsep">,</span> <span class="syntax_digit syntax_digit_integer">30</span></span></code><div class="tools"><form action="sql.php" method="post">
+<input name="db" value="dbms_project" type="hidden"><input name="table" value="sem3" type="hidden"><input name="token" value="bf875dce8892826b43529120d8ba109c" type="hidden"><input name="sql_query" value="SELECT * FROM `sem3` ORDER BY `scholar_number` ASC" type="hidden">
+<input name="profiling_form" value="1" type="hidden">
+<input name="profiling" id="profiling" onclick="this.form.submit();" type="checkbox"><label for="profiling">Profiling</label><noscript><input type="submit" value="Go" /></noscript>
+</form>
+ [
+<a href="http://localhost/phpmyadmin/tbl_sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;show_query=1&amp;token=bf875dce8892826b43529120d8ba109c#querybox" onclick="window.parent.focus_querywindow('SELECT * FROM `sem3` ORDER BY `scholar_number` ASC'); return false;">Edit</a>
+] [
+<a href="http://localhost/phpmyadmin/import.php?db=dbms_project&amp;table=sem3&amp;sql_query=EXPLAIN+SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c">Explain SQL</a>
+] [
+<a href="http://localhost/phpmyadmin/import.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;show_query=1&amp;show_as_php=1&amp;token=bf875dce8892826b43529120d8ba109c">Create PHP Code</a>
+] [
+<a href="http://localhost/phpmyadmin/import.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;show_query=1&amp;token=bf875dce8892826b43529120d8ba109c">Refresh</a>
+]</div></div><br>
+
+<!-- Navigation bar -->
+<table cellspacing="0" cellpadding="2" border="0">
+<tbody><tr>
+    <td>
+    &nbsp;&nbsp;&nbsp;
+</td>
+<td align="center">
+    <form action="sql.php" method="post" onsubmit="return (checkFormElementInRange(this, 'session_max_rows', '%d is not valid row number.', 1) &amp;&amp; checkFormElementInRange(this, 'pos', '%d is not valid row number.', 0-1))">
+        <input name="db" value="dbms_project" type="hidden"><input name="table" value="sem3" type="hidden"><input name="token" value="bf875dce8892826b43529120d8ba109c" type="hidden">        <input name="sql_query" value="SELECT * FROM `sem3` ORDER BY `scholar_number` ASC" type="hidden">
+        <input name="goto" value="tbl_structure.php" type="hidden">
+        <input name="navig" value="Show :" type="submit">
+        <input name="session_max_rows" size="3" value="30" class="textfield" onfocus="this.select()" type="text">
+        row(s) starting from record #
+        <input name="pos" size="6" value="0" class="textfield" onfocus="this.select()" type="text">
+        <br>
+        in 
+            <select name="disp_direction">
+                <option value="horizontal" selected="selected">horizontal</option>
+                <option value="horizontalflipped">horizontal (rotated headers)</option>
+                <option value="vertical">vertical</option>
+            </select>
+            mode and repeat headers after 
+            <input size="3" name="repeat_cells" value="100" class="textfield" type="text">
+            cells
+    </form>
+</td>
+<td>
+    &nbsp;&nbsp;&nbsp;
+</td>
+    
+</tr>
+</tbody></table>
+
+    
+<form action="sql.php" method="post">
+<input name="db" value="dbms_project" type="hidden"><input name="table" value="sem3" type="hidden"><input name="token" value="bf875dce8892826b43529120d8ba109c" type="hidden">Sort by key: <select name="sql_query" onchange="this.form.submit();">
+<option value="SELECT * FROM `sem3` ORDER BY `scholar_number` ASC" selected="selected">PRIMARY (Ascending)</option><option value="SELECT * FROM `sem3` ORDER BY `scholar_number` DESC">PRIMARY (Descending)</option><option value="SELECT * FROM `sem3`">None</option></select>
+<noscript><input type="submit" value="Go" /></noscript></form>
+<form method="post" action="sql.php" name="displayOptionsForm" id="displayOptionsForm"><input name="db" value="dbms_project" type="hidden"><input name="table" value="sem3" type="hidden"><input name="sql_query" value="SELECT * FROM `sem3` ORDER BY `scholar_number` ASC" type="hidden"><input name="goto" value="tbl_structure.php" type="hidden"><input name="display_options_form" value="1" type="hidden"><input name="token" value="bf875dce8892826b43529120d8ba109c" type="hidden"><br><script type="text/javascript">
+// <![CDATA[
+window.addEvent('domready', function(){
+    var status = {
+        'true': '- ',
+        'false': '+ '
+    };
+
+    var anchordisplayoptions = new Element('a', {
+        'id': 'toggle_displayoptions',
+        'href': '#',
+        'events': {
+            'click': function(){
+                mySlidedisplayoptions.toggle();
+            }
+        }
+    });
+
+    anchordisplayoptions.appendText('Options');
+    anchordisplayoptions.injectBefore('displayoptions');
+
+    var slider_statusdisplayoptions = new Element('span', {
+        'id': 'slider_status_displayoptions'
+    });
+    slider_statusdisplayoptions.appendText('+ ');
+    slider_statusdisplayoptions.injectBefore('toggle_displayoptions');
+
+    var mySlidedisplayoptions = new Fx.Slide('displayoptions');
+        mySlidedisplayoptions.hide();
+            mySlidedisplayoptions.addEvent('complete', function() {
+                $('slider_status_displayoptions').set('html', status[mySlidedisplayoptions.open]);
+                    });
+
+    $('displayoptions').style.display="block";
+});
+    document.write('<div id="displayoptions"  style="display: none;">');
+    //]]>
+    </script><span id="slider_status_displayoptions">+ </span><a id="toggle_displayoptions" href="#">Options</a><div style="margin: 0px; position: static; overflow: hidden; height: 0px;"><div id="displayoptions" style="display: block; margin: 0px;">
+    <noscript>
+    <div id="displayoptions">
+    </noscript>
+    <fieldset><div class="formelement"><input name="display_text" id="display_text_P" value="P" checked="checked" type="radio">
+<label for="display_text_P">Partial Texts</label><br>
+<input name="display_text" id="display_text_F" value="F" type="radio">
+<label for="display_text_F">Full Texts</label><br>
+</div><div class="formelement"><input name="display_binary" id="display_binary" type="checkbox"><label for="display_binary">Show BINARY</label><input name="display_blob" id="display_blob" type="checkbox"><label for="display_blob">Show BLOB</label></div><div class="formelement"><input name="hide_transformation" id="hide_transformation" type="checkbox"><label for="hide_transformation">Hide Browser transformation</label></div><div class="clearfloat"></div></fieldset><fieldset class="tblFooters"><input value="Go" type="submit"></fieldset></div></div></form><form method="post" action="tbl_row_action.php" name="rowsDeleteForm" id="rowsDeleteForm">
+<input name="db" value="dbms_project" type="hidden"><input name="table" value="sem3" type="hidden"><input name="token" value="bf875dce8892826b43529120d8ba109c" type="hidden"><input name="goto" value="sql.php" type="hidden">
+<table id="table_results" class="data">
+<thead><tr>
+    <th colspan="3"></th>
+            <th>
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60sem3%60.%60scholar_number%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c" title="Sort">scholar_number</a>
+</th><th>
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60sem3%60.%60course1%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c" title="Sort">course1</a>
+</th><th>
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60sem3%60.%60course2%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c" title="Sort">course2</a>
+</th><th>
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60sem3%60.%60course3%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c" title="Sort">course3</a>
+</th><th>
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60sem3%60.%60course4%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c" title="Sort">course4</a>
+</th><th>
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60sem3%60.%60course5%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c" title="Sort">course5</a>
+</th><th>
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60sem3%60.%60course6%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c" title="Sort">course6</a>
+</th></tr>
+</thead>
+        <tbody>
+    <tr class="odd">
+    <td align="center">
+        <input id="id_rows_to_delete0" name="rows_to_delete[ `sem3`.`scholar_number` = 6]" onclick="copyCheckboxesRange('rowsDeleteForm', 'id_rows_to_delete0','l');" value="DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 6 LIMIT 1" type="checkbox">
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/tbl_change.php?db=dbms_project&amp;table=sem3&amp;primary_key=+%60sem3%60.%60scholar_number%60+%3D+6&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;goto=sql.php&amp;token=bf875dce8892826b43529120d8ba109c"><img src="sql_data/b_edit.png" title="Edit" alt="Edit" class="icon" width="16" height="16"></a>
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=DELETE+FROM+%60dbms_project%60.%60sem3%60+WHERE+%60sem3%60.%60scholar_number%60+%3D+6+LIMIT+1&amp;zero_rows=The+row+has+been+deleted&amp;goto=sql.php%3Fdb%3Ddbms_project%26table%3Dsem3%26sql_query%3DSELECT%2B%252A%2BFROM%2B%2560sem3%2560%2BORDER%2BBY%2B%2560scholar_number%2560%2BASC%26zero_rows%3DThe%2Brow%2Bhas%2Bbeen%2Bdeleted%26goto%3Dtbl_structure.php%26token%3Dbf875dce8892826b43529120d8ba109c&amp;token=bf875dce8892826b43529120d8ba109c" onclick="return confirmLink(this, 'DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 6 LIMIT 1')"><img src="sql_data/b_drop.png" title="Delete" alt="Delete" class="icon" width="16" height="16"></a>
+    </td>
+<td class=" nowrap" align="right">6</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+</tr>
+            
+    <tr class="even">
+    <td align="center">
+        <input id="id_rows_to_delete1" name="rows_to_delete[ `sem3`.`scholar_number` = 7]" onclick="copyCheckboxesRange('rowsDeleteForm', 'id_rows_to_delete1','l');" value="DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 7 LIMIT 1" type="checkbox">
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/tbl_change.php?db=dbms_project&amp;table=sem3&amp;primary_key=+%60sem3%60.%60scholar_number%60+%3D+7&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;goto=sql.php&amp;token=bf875dce8892826b43529120d8ba109c"><img src="sql_data/b_edit.png" title="Edit" alt="Edit" class="icon" width="16" height="16"></a>
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=DELETE+FROM+%60dbms_project%60.%60sem3%60+WHERE+%60sem3%60.%60scholar_number%60+%3D+7+LIMIT+1&amp;zero_rows=The+row+has+been+deleted&amp;goto=sql.php%3Fdb%3Ddbms_project%26table%3Dsem3%26sql_query%3DSELECT%2B%252A%2BFROM%2B%2560sem3%2560%2BORDER%2BBY%2B%2560scholar_number%2560%2BASC%26zero_rows%3DThe%2Brow%2Bhas%2Bbeen%2Bdeleted%26goto%3Dtbl_structure.php%26token%3Dbf875dce8892826b43529120d8ba109c&amp;token=bf875dce8892826b43529120d8ba109c" onclick="return confirmLink(this, 'DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 7 LIMIT 1')"><img src="sql_data/b_drop.png" title="Delete" alt="Delete" class="icon" width="16" height="16"></a>
+    </td>
+<td class=" nowrap" align="right">7</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+</tr>
+            
+    <tr class="odd">
+    <td align="center">
+        <input id="id_rows_to_delete2" name="rows_to_delete[ `sem3`.`scholar_number` = 8]" onclick="copyCheckboxesRange('rowsDeleteForm', 'id_rows_to_delete2','l');" value="DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 8 LIMIT 1" type="checkbox">
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/tbl_change.php?db=dbms_project&amp;table=sem3&amp;primary_key=+%60sem3%60.%60scholar_number%60+%3D+8&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;goto=sql.php&amp;token=bf875dce8892826b43529120d8ba109c"><img src="sql_data/b_edit.png" title="Edit" alt="Edit" class="icon" width="16" height="16"></a>
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=DELETE+FROM+%60dbms_project%60.%60sem3%60+WHERE+%60sem3%60.%60scholar_number%60+%3D+8+LIMIT+1&amp;zero_rows=The+row+has+been+deleted&amp;goto=sql.php%3Fdb%3Ddbms_project%26table%3Dsem3%26sql_query%3DSELECT%2B%252A%2BFROM%2B%2560sem3%2560%2BORDER%2BBY%2B%2560scholar_number%2560%2BASC%26zero_rows%3DThe%2Brow%2Bhas%2Bbeen%2Bdeleted%26goto%3Dtbl_structure.php%26token%3Dbf875dce8892826b43529120d8ba109c&amp;token=bf875dce8892826b43529120d8ba109c" onclick="return confirmLink(this, 'DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 8 LIMIT 1')"><img src="sql_data/b_drop.png" title="Delete" alt="Delete" class="icon" width="16" height="16"></a>
+    </td>
+<td class=" nowrap" align="right">8</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+</tr>
+            
+    <tr class="even">
+    <td align="center">
+        <input id="id_rows_to_delete3" name="rows_to_delete[ `sem3`.`scholar_number` = 9]" onclick="copyCheckboxesRange('rowsDeleteForm', 'id_rows_to_delete3','l');" value="DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 9 LIMIT 1" type="checkbox">
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/tbl_change.php?db=dbms_project&amp;table=sem3&amp;primary_key=+%60sem3%60.%60scholar_number%60+%3D+9&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;goto=sql.php&amp;token=bf875dce8892826b43529120d8ba109c"><img src="sql_data/b_edit.png" title="Edit" alt="Edit" class="icon" width="16" height="16"></a>
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=DELETE+FROM+%60dbms_project%60.%60sem3%60+WHERE+%60sem3%60.%60scholar_number%60+%3D+9+LIMIT+1&amp;zero_rows=The+row+has+been+deleted&amp;goto=sql.php%3Fdb%3Ddbms_project%26table%3Dsem3%26sql_query%3DSELECT%2B%252A%2BFROM%2B%2560sem3%2560%2BORDER%2BBY%2B%2560scholar_number%2560%2BASC%26zero_rows%3DThe%2Brow%2Bhas%2Bbeen%2Bdeleted%26goto%3Dtbl_structure.php%26token%3Dbf875dce8892826b43529120d8ba109c&amp;token=bf875dce8892826b43529120d8ba109c" onclick="return confirmLink(this, 'DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 9 LIMIT 1')"><img src="sql_data/b_drop.png" title="Delete" alt="Delete" class="icon" width="16" height="16"></a>
+    </td>
+<td class=" nowrap" align="right">9</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+</tr>
+            
+    <tr class="odd">
+    <td align="center">
+        <input id="id_rows_to_delete4" name="rows_to_delete[ `sem3`.`scholar_number` = 10]" onclick="copyCheckboxesRange('rowsDeleteForm', 'id_rows_to_delete4','l');" value="DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 10 LIMIT 1" type="checkbox">
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/tbl_change.php?db=dbms_project&amp;table=sem3&amp;primary_key=+%60sem3%60.%60scholar_number%60+%3D+10&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;goto=sql.php&amp;token=bf875dce8892826b43529120d8ba109c"><img src="sql_data/b_edit.png" title="Edit" alt="Edit" class="icon" width="16" height="16"></a>
+    </td>
+    <td align="center">
+
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=DELETE+FROM+%60dbms_project%60.%60sem3%60+WHERE+%60sem3%60.%60scholar_number%60+%3D+10+LIMIT+1&amp;zero_rows=The+row+has+been+deleted&amp;goto=sql.php%3Fdb%3Ddbms_project%26table%3Dsem3%26sql_query%3DSELECT%2B%252A%2BFROM%2B%2560sem3%2560%2BORDER%2BBY%2B%2560scholar_number%2560%2BASC%26zero_rows%3DThe%2Brow%2Bhas%2Bbeen%2Bdeleted%26goto%3Dtbl_structure.php%26token%3Dbf875dce8892826b43529120d8ba109c&amp;token=bf875dce8892826b43529120d8ba109c" onclick="return confirmLink(this, 'DELETE FROM `dbms_project`.`sem3` WHERE `sem3`.`scholar_number` = 10 LIMIT 1')"><img src="sql_data/b_drop.png" title="Delete" alt="Delete" class="icon" width="16" height="16"></a>
+    </td>
+<td class=" nowrap" align="right">10</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+<td class=" nowrap" align="right">0</td>
+</tr>
+            
+</tbody>
+</table>
+
+    <img class="selectallarrow" src="sql_data/arrow_ltr.png" alt="With selected:" width="38" height="22">
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;goto=tbl_structure.php&amp;checkall=1&amp;token=bf875dce8892826b43529120d8ba109c" onclick="if (markAllRows('rowsDeleteForm')) return false;">Check All</a>
+
+ / 
+
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;goto=tbl_structure.php&amp;token=bf875dce8892826b43529120d8ba109c" onclick="if (unMarkAllRows('rowsDeleteForm')) return false;">Uncheck All</a>
+
+<i>With selected:</i>
+<button class="mult_submit" type="submit" name="submit_mult" value="Change" title="Change">
+<img src="sql_data/b_edit.png" title="Change" alt="Change" class="icon" width="16" height="16"></button>
+<button class="mult_submit" type="submit" name="submit_mult" value="Delete" title="Delete">
+<img src="sql_data/b_drop.png" title="Delete" alt="Delete" class="icon" width="16" height="16"></button>
+<button class="mult_submit" type="submit" name="submit_mult" value="Export" title="Export">
+<img src="sql_data/b_tblexport.png" title="Export" alt="Export" class="icon" width="16" height="16"></button>
+
+<input name="sql_query" value="SELECT * FROM `sem3` ORDER BY `scholar_number` ASC" type="hidden">
+<input name="url_query" value="db=dbms_project&amp;table=sem3&amp;token=bf875dce8892826b43529120d8ba109c&amp;goto=tbl_sql.php&amp;back=tbl_sql.php" type="hidden">
+</form>
+<br>
+
+<!-- Navigation bar -->
+<table cellspacing="0" cellpadding="2" border="0">
+<tbody><tr>
+    <td>
+    &nbsp;&nbsp;&nbsp;
+</td>
+<td align="center">
+    <form action="sql.php" method="post" onsubmit="return (checkFormElementInRange(this, 'session_max_rows', '%d is not valid row number.', 1) &amp;&amp; checkFormElementInRange(this, 'pos', '%d is not valid row number.', 0-1))">
+        <input name="db" value="dbms_project" type="hidden"><input name="table" value="sem3" type="hidden"><input name="token" value="bf875dce8892826b43529120d8ba109c" type="hidden">        <input name="sql_query" value="SELECT * FROM `sem3` ORDER BY `scholar_number` ASC" type="hidden">
+        <input name="goto" value="tbl_structure.php" type="hidden">
+        <input name="navig" value="Show :" type="submit">
+        <input name="session_max_rows" size="3" value="30" class="textfield" onfocus="this.select()" type="text">
+        row(s) starting from record #
+        <input name="pos" size="6" value="0" class="textfield" onfocus="this.select()" type="text">
+        <br>
+        in 
+            <select name="disp_direction">
+                <option value="horizontal" selected="selected">horizontal</option>
+                <option value="horizontalflipped">horizontal (rotated headers)</option>
+                <option value="vertical">vertical</option>
+            </select>
+            mode and repeat headers after 
+            <input size="3" name="repeat_cells" value="100" class="textfield" type="text">
+            cells
+    </form>
+</td>
+<td>
+    &nbsp;&nbsp;&nbsp;
+</td>
+    
+</tr>
+</tbody></table>
+
+    <fieldset><legend>Query results operations</legend>
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;printview=1&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c" target="print_view"><img src="sql_data/b_print.png" title="Print view" alt="Print view" class="icon" width="16" height="16"> Print view</a>
+
+
+<a href="http://localhost/phpmyadmin/sql.php?db=dbms_project&amp;table=sem3&amp;printview=1&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;display_text=F&amp;token=bf875dce8892826b43529120d8ba109c" target="print_view"><img src="sql_data/b_print.png" title="Print view (with full texts)" alt="Print view (with full texts)" class="icon" width="16" height="16"> Print view (with full texts)</a>
+
+
+<a href="http://localhost/phpmyadmin/tbl_export.php?db=dbms_project&amp;table=sem3&amp;printview=1&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;single_table=true&amp;unlim_num_rows=5&amp;token=bf875dce8892826b43529120d8ba109c"><img src="sql_data/b_tblexport.png" title="Export" alt="Export" class="icon" width="16" height="16"> Export</a>
+
+
+<a href="http://localhost/phpmyadmin/view_create.php?db=dbms_project&amp;table=sem3&amp;printview=1&amp;sql_query=SELECT+%2A+FROM+%60sem3%60+ORDER+BY+%60scholar_number%60+ASC&amp;token=bf875dce8892826b43529120d8ba109c"><img src="sql_data/b_views.png" title="CREATE VIEW" alt="CREATE VIEW" class="icon" width="16" height="16"> CREATE VIEW</a>
+
+</fieldset><br><script type="text/javascript">
+//<![CDATA[
+// updates current settings
+if (window.parent.setAll) {
+    window.parent.setAll('en-utf-8', 'utf8_unicode_ci', '1', 'dbms_project', 'sem3', 'bf875dce8892826b43529120d8ba109c');
+}
+    // set current db, table and sql query in the querywindow
+if (window.parent.reload_querywindow) {
+    window.parent.reload_querywindow(
+        'dbms_project',
+        'sem3',
+        '');
+}
+    
+if (window.parent.frame_content) {
+    // reset content frame name, as querywindow needs to set a unique name
+    // before submitting form data, and navigation frame needs the original name
+    if (typeof(window.parent.frame_content.name) != 'undefined'
+     && window.parent.frame_content.name != 'frame_content') {
+        window.parent.frame_content.name = 'frame_content';
+    }
+    if (typeof(window.parent.frame_content.id) != 'undefined'
+     && window.parent.frame_content.id != 'frame_content') {
+        window.parent.frame_content.id = 'frame_content';
+    }
+    //window.parent.frame_content.setAttribute('name', 'frame_content');
+    //window.parent.frame_content.setAttribute('id', 'frame_content');
+}
+//]]>
+</script>
+
+
+</body></html>
