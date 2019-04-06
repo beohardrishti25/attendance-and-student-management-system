@@ -1,4 +1,4 @@
-
+<?php include("studentinfo.php") ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,14 +38,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="frontpage.html">MANIT</a>
+      <a class="navbar-brand" href="navbar.html">Xception</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
    
-        <!-- <li><a href="frontpage.html"><i class="fas fa-home"></i> Home</a></li> -->
+        <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Gallery</a></li>
         <li><a href="#"><i class="fas fa-book-open"></i> About</a></li>
         <li><a href="#"><i class="far fa-address-book"></i> Contact</a></li>
@@ -75,7 +75,7 @@
   <div class="jumbotron">
   <h2>Sign Up</h2>
   <hr>
-  <form action="signupteacherbackend.php" method="post">
+  <form action="insertdata.php" method="post">
     <div class="form-group">
     <label for="fname">First Name </label>
     <input type="text" class="form-control" id ="fname" name="fname" required><br>
@@ -100,15 +100,11 @@
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Select courses for Semester 1</label>
   </div>
-  
-  <select class="btn-sm"  class="custom-select" name="sem1[]" class="form-control" id="branch" required><br>
-    <option selected value=0>Choose...</option>
-    <option value="1">BEEE</option>
-    <option value="2">Chemistry</option>
+  <select class="btn-sm"  class="custom-select" name="sem1" class="form-control" id="branch" required><br>
+    <option selected>Choose...</option>
+    <option value="1">Physics</option>
+    <option value="2">C Programming</option>
     <option value="3">Environmental Studies</option>
-    <option value="4">Basic Mechanical Engineering</option>
-    <option value="5">Solid Mechanics</option>
-    <option value="6">Maths1</option>
   </select>
 
 </div>
@@ -117,49 +113,11 @@
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Select courses for Semester 2</label>
   </div>
-
-  <select class="btn-sm"  class="custom-select" name="sem1[]" class="form-control" id="branch" required><br>
-    <option selected value=0>Choose...</option>
-    <option value="1">C Programming</option>
-    <option value="2">Physics</option>
-    <option value="3">Communication</option>
-    <option value="4">ED</option>
-    <option value="5">Civil Engineering</option>
-    <option value="6">Maths2</option>
-  </select>
-
-</div>
-<br>
- <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Select courses for Semester 3</label>
-  </div>
-
-  <select class="btn-sm"  class="custom-select" name="sem1[]" class="form-control" id="branch" required><br>
-     <option selected value=0>Choose...</option>
-    <option value="1">PPL</option>
-    <option value="2">Digital Electronics</option>
-    <option value="3">Digital Communication</option>
-    <option value="4">Discrete Structure</option>
-    <option value="5">Data Structure</option>
-    <option value="6">Linear Algebra</option>
-  </select>
-
-</div>
-<br>
- <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Select courses for Semester 4</label>
-  </div>
-
-  <select class="btn-sm"  class="custom-select" name="sem1[]" class="form-control" id="branch" required><br>
-    <option selected value=0>Choose...</option>
-    <option value="1">DBMS</option>
-    <option value="2">TOC</option>
-    <option value="3">ADA</option>
-    <option value="4">Probability and queing theory</option>
-    <option value="5">Software Engineering</option>
-    <option value="6">Computer Architecture</option>
+  <select class="btn-sm"  class="custom-select" name="sem2" class="form-control" id="branch" required><br>
+    <option selected>Choose...</option>
+    <option value="4">DBMS</option>
+    <option value="5">TOC</option>
+    <option value="6">ADA</option>
   </select>
 
 </div>

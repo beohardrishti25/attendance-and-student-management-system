@@ -9,6 +9,8 @@
 		session_start();
 		$class="select * from sem".$_GET['sem']. " join student3 on scholarno=scholar_number where semester=".$_GET['sem'];
 		echo $class;
+		$fill_sql1="update teacher_courses set totalclasses=totalclasses+1 where sem=".$_GET['sem']." and course=".$_GET['course'];
+		$fill_query=mysqli_query($dbconnect,$fill_sql1);
 		$sql1=mysqli_query($dbconnect,$class);
 		$array1=mysqli_fetch_assoc($sql1);
 		$value=$_POST['tick'];

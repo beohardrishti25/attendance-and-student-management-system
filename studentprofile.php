@@ -87,27 +87,41 @@ header("refresh:3; url=signinstudent.html?wrong password");
     $array=mysqli_fetch_assoc($array1); 
     
     
+    
     	$j=0;
-    			 for($i=1;$i<=2;$i++)
-    			{
-    			?> <div class="timeline">
-    				<div class=" <?php if($j%2==0)
-  echo "container left";
-  else echo "container right";
-  $j++;
-  ?>">
+    for($i=1;$i<=6;$i++)
+    	{
+    	 ?> <div class="timeline">
+    		<div class=" <?php if($j%2==0)
+            echo "container left";
+ 			else echo "container right";
+  			$j++;?>"> <?php
+  			$sql2="select totalclasses from teacher_courses where sem=". $array2['semester']." and course=".$i;
+  			$array3=mysqli_query($con,$sql2);
+  			$array4=mysqli_fetch_assoc($array3);
+  			if($array4['totalclasses']==0)
+  				$x=0;
+  			else
+  				$x=($array['course'.$i]/$array4['totalclasses'])*100;
+  			?>
+  
   			
-    			<div class="content">
-    				<ul>
-        <li>attendance course<?php echo $i ?><br>
-    		<?php echo $array['course'.$i];?></li>
-        <li>coursse details</li>
-        <li>instructor details</li>
-      </ul>
+    		<div class="content">
+    		<h2>course<?php echo $i ?></h2>
+    		<ul>
+        		<li> attendance
+        		 <ul>
+        		    <li>classes attended :<?php echo $array['course'.$i];?></li>
+        			<li>total classes:<?php echo $array4['totalclasses'];?></li>
+       				<li>classes attended in percentage :<?php echo $x ;?>%</li>
+    			 </ul>
+        		<li>course details</li>
+       			<li>instructor details</li>
+      		</ul>
     				
 
 
-               </div>
+            </div>
   			</div>
   			 </div>
     		<?php	
@@ -130,68 +144,7 @@ else
 }
  ?>
 
-<!-- <div class="timeline">
-  <div class="container left">
-    <div class="content">
-      <h2>course 1</h2>
-      <ul>
-        <li>attendance</li>
-        <li>coursse details</li>
-        <li>instructor details</li>
-      </ul>
-    </div>
-  </div> -->
-  <!-- <div class="container right">
-    <div class="content">
-      <h2>course 2</h2>
-      <ul>
-        <li>attendance</li>
-        <li>coursse details</li>
-        <li>instructor details</li>
-      </ul>
-    </div>
-  </div>
-  <div class="container left">
-    <div class="content">
-      <h2>course 3</h2>
-      <ul>
-        <li>attendance</li>
-        <li>coursse details</li>
-        <li>instructor details</li>
-      </ul>
-    </div>
-  </div>
-  <div class="container right">
-    <div class="content">
-      <h2>course 4</h2>
-    <ul>
-        <li>attendance</li>
-        <li>coursse details</li>
-        <li>instructor details</li>
-      </ul>
-    </div>
-  </div>
-  <div class="container left">
-    <div class="content">
-      <h2>course 5</h2>
-      <ul>
-        <li>attendance</li>
-        <li>coursse details</li>
-        <li>instructor details</li>
-      </ul>
-    </div>
-  </div>
-  <div class="container right">
-    <div class="content">
-      <h2>course 6</h2>
-      <ul>
-        <li>attendance</li>
-        <li>coursse details</li>
-        <li>instructor details</li>
-      </ul>
-    </div>
-  </div>
-</div> -->
+
 <div id="aboutus">
   
   <h2>About us </h2>

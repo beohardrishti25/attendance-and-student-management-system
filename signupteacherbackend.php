@@ -37,10 +37,12 @@
 
 	{$sql="INSERT INTO teacher(fname,lname,t_id,password)VALUES('$fname','$lname','$t_id','$password')";
 	//$array=mysqli_query($con,$sql);
-	for($i=0;$i<=1;$i++){
+	$k=0;
+	for($i=0;$i<=5;$i++){
 		$j=$i+1;
-		$sql1="INSERT INTO teacher_courses(t_id,sem,course)VALUES('$t_id','$j','$value[$i]')";
-		mysqli_query($con,$sql1);
+		if($value[$i]!=0)
+		{$sql1="INSERT INTO teacher_courses(t_id,sem,course,totalclasses)VALUES('$t_id','$j','$value[$i]','$k')";
+		mysqli_query($con,$sql1);}
 	}
 	if(mysqli_query($con,$sql))
 	{
@@ -48,11 +50,11 @@
 		session_start();
 		$_SESSION['c']=$t_id;
 		$_SESSION['d']=$password;
-         header("refresh:5; url=teacher_profile.php?page=set");
+         header("refresh:0; url=teacher_profile.php?page=set");
 	}
 	}}
 	elseif(mysqli_num_rows($check)!=0 && $check1['password']!=$password)
-		{echo "choose different teacherid";
+		{echo " account already exist";
       header("refresh:3; url=signupteacher.php");
 }
 	if(mysqli_num_rows($check)!=0 && $check1['password']==$password)

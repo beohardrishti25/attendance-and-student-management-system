@@ -1,3 +1,39 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>SIGN UP</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<h2>Sign up</h2>
+</head>
+<body>
+<div>
+	
+	<form action="signupstudentbackend.php" method="post">
+		<label for="email">Username</label>
+		<input type="email" id ="email" name="email" placeholder="Email" ><br>
+		<label for="fname">First Name</label>
+		<input type="text" id ="fname" name="fname"  ><br>
+		<label for="lname">Last Name</label>
+		<input type="text" id ="lname" name="lname"  ><br>
+		<label for="branch">Branch</label>
+		<input type="text" id ="branch" name="branch"  ><br>
+		<label for="semester">Semester</label>
+		<input type="text" id ="semester" name="semester"  required><br>
+		<label for="degree">Degree Enrolled</label>
+		<input type="text" id ="degree" name="degree"  ><br>
+		<label for="scholarno">Scholar Number</label>
+		<input type="text" id ="scholarno" name="scholarno"  ><br>
+		<label for="password">Password</label>
+		<input type="password" id="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,10}" required title="5 to 10 characters" ><br>
+		
+		
+		<label for="remember"><input type="checkbox" name="remember">Keep me logged in</label><br>
+		<input type="submit" name="login" value="submit" />
+	</form>
+	
+</div>
+</body>
+</html> -->
 
 <!DOCTYPE html>
 <html>
@@ -45,7 +81,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
    
-        <!-- <li><a href="frontpage.html"><i class="fas fa-home"></i> Home</a></li> -->
+        <!-- <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li> -->
         <li><a href="#"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> Gallery</a></li>
         <li><a href="#"><i class="fas fa-book-open"></i> About</a></li>
         <li><a href="#"><i class="far fa-address-book"></i> Contact</a></li>
@@ -75,7 +111,7 @@
   <div class="jumbotron">
   <h2>Sign Up</h2>
   <hr>
-  <form action="signupteacherbackend.php" method="post">
+  <form action="signupstudentbackend.php" method="post">
     <div class="form-group">
     <label for="fname">First Name </label>
     <input type="text" class="form-control" id ="fname" name="fname" required><br>
@@ -89,80 +125,24 @@
     
     <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id ="email" name="username" placeholder="Email" required><br>
+    <input type="email" class="form-control" id ="email" name="email" placeholder="Email" required><br>
     </div>
     <div class="form-group">
-    <label for="schno">Teacher ID </label>
-    <input type="text" class="form-control" id ="schno" name="t_id" placeholder="eg. 141116081" required><br>
+    <label for="scholorno">Scholar No </label>
+    <input type="text" class="form-control" id ="scholarno" name="scholarno" placeholder="eg. 141116081" required><br>
     </div>
-<br>
-    <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Select courses for Semester 1</label>
-  </div>
-  
-  <select class="btn-sm"  class="custom-select" name="sem1[]" class="form-control" id="branch" required><br>
-    <option selected value=0>Choose...</option>
-    <option value="1">BEEE</option>
-    <option value="2">Chemistry</option>
-    <option value="3">Environmental Studies</option>
-    <option value="4">Basic Mechanical Engineering</option>
-    <option value="5">Solid Mechanics</option>
-    <option value="6">Maths1</option>
-  </select>
-
-</div>
-<br>
-    <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Select courses for Semester 2</label>
-  </div>
-
-  <select class="btn-sm"  class="custom-select" name="sem1[]" class="form-control" id="branch" required><br>
-    <option selected value=0>Choose...</option>
-    <option value="1">C Programming</option>
-    <option value="2">Physics</option>
-    <option value="3">Communication</option>
-    <option value="4">ED</option>
-    <option value="5">Civil Engineering</option>
-    <option value="6">Maths2</option>
-  </select>
-
-</div>
-<br>
- <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Select courses for Semester 3</label>
-  </div>
-
-  <select class="btn-sm"  class="custom-select" name="sem1[]" class="form-control" id="branch" required><br>
-     <option selected value=0>Choose...</option>
-    <option value="1">PPL</option>
-    <option value="2">Digital Electronics</option>
-    <option value="3">Digital Communication</option>
-    <option value="4">Discrete Structure</option>
-    <option value="5">Data Structure</option>
-    <option value="6">Linear Algebra</option>
-  </select>
-
-</div>
-<br>
- <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="inputGroupSelect01">Select courses for Semester 4</label>
-  </div>
-
-  <select class="btn-sm"  class="custom-select" name="sem1[]" class="form-control" id="branch" required><br>
-    <option selected value=0>Choose...</option>
-    <option value="1">DBMS</option>
-    <option value="2">TOC</option>
-    <option value="3">ADA</option>
-    <option value="4">Probability and queing theory</option>
-    <option value="5">Software Engineering</option>
-    <option value="6">Computer Architecture</option>
-  </select>
-
-</div>
+    <div class="form-group">
+    <label for="degree">Degree </label>
+    <input type="text" class="form-control" id ="degree" name="degree" placeholder="" required><br>
+    </div>
+    <div class="form-group">
+    <label for="semester">Semester </label>
+    <input type="text" class="form-control" id ="semester" name="semester" placeholder="eg. 1" required><br>
+    </div>
+    <div class="form-group">
+    <label for="Branch">Branch </label>
+    <input type="text" class="form-control" id ="Branch" name="branch" placeholder="eg. cse" required><br>
+    </div>
 <br>
     <div class="form-group">
     <label for="password">Enter Password</label>
