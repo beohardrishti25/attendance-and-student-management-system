@@ -1,15 +1,15 @@
 <?php
     if(isset($_POST['submit1']))
-	{$dbconnect=mysqli_connect('localhost','root','','dbms_project');
+	{$dbconnect=mysqli_connect('localhost','root','','dbms');
 	if(!$dbconnect)
 		echo'error';
 	else
 	{
-		//$class="select * from sem".$_GET['sem']." join student on scholar_no=scholar_number where semester=".$_GET['sem'];
+		
 		session_start();
-		$class="select * from sem".$_GET['sem']. " join student3 on scholarno=scholar_number where semester=".$_GET['sem'];
+		$class="select * from   student  where sem=".$_GET['sem'];
 		echo $class;
-		$fill_sql1="update teacher_courses set totalclasses=totalclasses+1 where sem=".$_GET['sem']." and course=".$_GET['course'];
+		$fill_sql1="update teacher_courses set classes_taken_by_a_teacher=classes_taken_by_a_teacher +1 where   t_id=".$_SESSION['c']." and c_id=".$_GET['courseid'];
 		$fill_query=mysqli_query($dbconnect,$fill_sql1);
 		$sql1=mysqli_query($dbconnect,$class);
 		$array1=mysqli_fetch_assoc($sql1);
@@ -40,7 +40,7 @@ $i=0;
    	do{
 					
 					if($value[$i]==1)
-					{$fill_sql="update sem".$_GET['sem']. " set course".$_GET['course']. "=course".$_GET['course']. "+1 where scholar_number=".$array1['scholar_number'];
+					{$fill_sql="update attendance set classes_attended=classes_attended+1 where s_id=".$array1['s_id']." and c_id=".$_GET['courseid'];
 					$fill_query=mysqli_query($dbconnect,$fill_sql);}
 					#echo $array1['course1'];
 					$i++;

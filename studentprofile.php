@@ -35,7 +35,7 @@ if(isset($_POST['submit'])|| isset($_GET['page']))
 		echo "Not connected to server";
 	
 	}
-	 elseif(!mysqli_select_db($con,'dbms_project'))
+	 elseif(!mysqli_select_db($con,'dbms'))
 	 {
 	 	echo 'Database Not Selected';
 	}
@@ -48,9 +48,9 @@ if(isset($_POST['submit'])|| isset($_GET['page']))
 		}
 	//$scholarno=$_POST['scholarno'];
 	//$password=$_POST['password'];
-	$retrive="SELECT *  FROM student3 WHERE scholarno=".$_SESSION['scholarno']." AND password='".$_SESSION['password']."'";
+	$retrive="SELECT *  FROM student WHERE s_id=".$_SESSION['scholarno']." AND password='".$_SESSION['password']."'";
   $array1=mysqli_query($con,$retrive);
-  $retrive1="SELECT password FROM student3 where scholarno=".$_SESSION['scholarno']." ";
+  $retrive1="SELECT password FROM student where s_id=".$_SESSION['scholarno']." ";
   $check=mysqli_query($con,$retrive1);
   $check1=mysqli_fetch_assoc($check);
   
@@ -78,40 +78,48 @@ header("refresh:3; url=signinstudent.html?wrong password");
         <button type="submit" name="submit">Logout</button>
  </form>
  	<?php
-	$sql1="select semester from student3 where scholarno=".$_SESSION['scholarno'];
+	$sql1="select sem from student where s_id=".$_SESSION['scholarno'];
 	$query=mysqli_query($con,$sql1);
 	$array2=mysqli_fetch_assoc($query);
-	$sql="select * from student3 join sem". $array2['semester']." on student3.scholarno=sem". $array2['semester'].".scholar_number where student3.scholarno=".$_SESSION['scholarno'];
 	
-	$array1=mysqli_query($con,$sql);
-    $array=mysqli_fetch_assoc($array1); 
     
     
     
     	$j=0;
     for($i=1;$i<=6;$i++)
-    	{
+      {
+    	
     	 ?> <div class="timeline">
     		<div class=" <?php if($j%2==0)
             echo "container left";
  			else echo "container right";
   			$j++;?>"> <?php
-  			$sql2="select totalclasses from teacher_courses where sem=". $array2['semester']." and course=".$i;
+        $c=6*($array2['sem']-1)+$i;
+  			$sql2="select sum(classes_taken_by_a_teacher) as totalclasses from teacher_courses where c_id=". $c;
+        //echo $sql2;
+        $sql3="select cname from courses where c_id=".$c;
+        $arr=mysqli_query($con,$sql3);
+        $arr1=mysqli_fetch_assoc($arr);
   			$array3=mysqli_query($con,$sql2);
   			$array4=mysqli_fetch_assoc($array3);
+        $sql="select * from student s join attendance a on s.s_id=a.s_id where s.s_id=".$_SESSION['scholarno'] ." and c_id=". $c;
+        //echo $sql;
+        
+         $array1=mysqli_query($con,$sql);
+        $array=mysqli_fetch_assoc($array1);
   			if($array4['totalclasses']==0)
   				$x=0;
   			else
-  				$x=($array['course'.$i]/$array4['totalclasses'])*100;
+  				$x=($array['classes_attended']/$array4['totalclasses'])*100;
   			?>
   
   			
     		<div class="content">
-    		<h2>course<?php echo $i ?></h2>
+    		<h2>courseid<?php echo $array['c_id'] ?></h2><h3>course name:<?php echo $arr1['cname'];?></h3>
     		<ul>
         		<li> attendance
         		 <ul>
-        		    <li>classes attended :<?php echo $array['course'.$i];?></li>
+        		    <li>classes attended :<?php echo $array['classes_attended'];?></li>
         			<li>total classes:<?php echo $array4['totalclasses'];?></li>
        				<li>classes attended in percentage :<?php echo $x ;?>%</li>
     			 </ul>

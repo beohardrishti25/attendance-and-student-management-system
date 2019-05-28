@@ -10,7 +10,7 @@ if(isset($_POST['submit']))
 		echo "Not connected to server";
 	}
 	
-	 if(!mysqli_select_db($con,'dbms_project'))
+	 if(!mysqli_select_db($con,'dbms'))
 	 {
 	 	echo 'Database Not Selected';
 	}
@@ -23,10 +23,9 @@ if(isset($_POST['submit']))
 	$password=$_POST['password'];
 	$scholarno=$_POST['scholarno'];
 	//echo $scholarno;
-	$i=0;
-	$retrive="SELECT * FROM student3 where scholarno='$scholarno'and password='$password' ";
+		$retrive="SELECT * FROM student where s_id='$scholarno'and password='$password' ";
 	$array1=mysqli_query($con,$retrive);
-	$retrive1="SELECT password FROM student3 where scholarno='$scholarno' ";
+	$retrive1="SELECT password FROM student where s_id='$scholarno' ";
 	$check=mysqli_query($con,$retrive1);
 	$check1=mysqli_fetch_assoc($check);
 	//echo $check1['password'];
@@ -35,12 +34,18 @@ if(isset($_POST['submit']))
 
 	{if(mysqli_num_rows($array1)==0)
 
-	{$sql="INSERT INTO student3(email,fname,lname,branch,semester,degree,password,scholarno)VALUES('$email','$fname','$lname','$branch','$semester','$degree','$password','$scholarno')";
+	{$sql="INSERT INTO student(email,fname,lname,branch,sem,degree,password,s_id)VALUES('$email','$fname','$lname','$branch','$semester','$degree','$password','$scholarno')";
 	// $array=mysqli_query($con,$sql);
-	$sql1="insert into sem".$semester." (scholar_number,course1,course2)values('$scholarno','$i','$i')";
+	//$sql1="insert into sem".$semester." (scholar_number,course1,course2)values('$scholarno','$i','$i')";
+	for($i=0;$i<6;$i++)
+	{	$j=6*($semester-1)+1+$i;
+		$k=0;
+		$sql1="insert into attendance(c_id,s_id,classes_attended)values('$j','$scholarno','$k')";
+		mysqli_query($con,$sql1);
+	}
 	//echo $sql1;
 	//mysqli_query($con,$sql1);
-	if(mysqli_query($con,$sql) && mysqli_query($con,$sql1))
+	if(mysqli_query($con,$sql) )
 	{
 		echo 'Inserted';
 		session_start();

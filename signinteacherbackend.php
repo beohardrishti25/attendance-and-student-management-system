@@ -38,7 +38,7 @@ $con=mysqli_connect('127.0.0.1','root','');
   {if(mysqli_num_rows($array1)==0)
   
     {echo "you dont have any  account";
-         //header("refresh:3; url=signupteacher.php");
+         header("refresh:3; url=signupteacher.html");
   
     }}
 
@@ -46,7 +46,7 @@ $con=mysqli_connect('127.0.0.1','root','');
 
     elseif(mysqli_num_rows($check)!=0 && $check1['password']!=$_SESSION['d'])
     {echo "password is incorrect";
-//header("refresh:3; url=signinteacher.php");
+header("refresh:3; url=signinteacher.html");
 }
 if(mysqli_num_rows($check)!=0 && $check1['password']==$_SESSION['d'])
     {
@@ -73,7 +73,7 @@ if(mysqli_num_rows($check)!=0 && $check1['password']==$_SESSION['d'])
    }}
    else
    {
-    //header("refresh:0; url=signinteacher.html?signup=empty");
+    header("refresh:0; url=signinteacher.html?signin=empty");
     echo "tree";
    }
 

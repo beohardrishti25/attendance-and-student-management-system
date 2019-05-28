@@ -251,7 +251,7 @@ body {
   {
     echo 'Not connected to server';
   }
-  elseif($con && !mysqli_select_db($con,'dbms_project'))
+  elseif($con && !mysqli_select_db($con,'dbms'))
   {
     echo 'Database Not Selected';
   }
@@ -277,7 +277,7 @@ body {
   
   {if(mysqli_num_rows($array1)==0)
   
-    {header("refresh:3; url=signupteacher.php?no account");
+    {header("refresh:3; url=signupteacher.html?no account");
     ?> <br> <br><br><?php echo "you dont have any  account";
      //session_unset();
     // session_destroy();
@@ -330,11 +330,12 @@ if(mysqli_num_rows($check)!=0 && $check1['password']==$_SESSION['d'])
  </form> -->
  <?php
 
-       $sql="SELECT sem,course FROM teacher_courses WHERE t_id=".$_SESSION['c'];
+       $sql="SELECT t.c_id AS c_id,c.cname AS cname,c.sem AS sem  FROM teacher_courses t JOIN courses c ON t.c_id=c.c_id WHERE t.t_id=".$_SESSION['c'];
+       //echo $sql;
   $query=mysqli_query($con,$sql);
   $array=mysqli_fetch_assoc($query);
   $i=0;
-  do{if($array['course']!=0) {?>
+  do{if($array['c_id']!=0) {?>
     <div class="timeline">
   <div class=" <?php if($i%2==0)
   echo "container left";
@@ -342,9 +343,9 @@ if(mysqli_num_rows($check)!=0 && $check1['password']==$_SESSION['d'])
   $i++;
   ?>">
     <div class="content">
-      <h2>course <?php echo $i; ?></h2>
+      <h3>CourseName: <?php echo $array['cname']; ?></h3>
       <ul>
-        <li><a href="attendance_teacher.php?sem=<?php echo $array['sem'];?> & course=<?php echo $array['course'];?> "><?php echo"sem=".$array['sem'] ."  "."course=".$array['course'] ?></a> </br></li>
+        <li><a href="attendance_teacher.php?courseid=<?php echo $array['c_id'];?> & coursename=<?php echo $array['cname'];?> & sem=<?php echo $array['sem']; ?>"><?php echo"sem=".$array['sem'] ."  "."courseid=".$array['c_id'] ?></a> </br></li>
         <li>course details</li>
       </ul>
     </div>
@@ -364,7 +365,7 @@ else
    }}
    else
    {
-    //header("refresh:0; url=signinteacher.html?signup=empty");
+    header("refresh:0; url=signinteacher.html?signin=empty");
     echo "tree";
    }
 

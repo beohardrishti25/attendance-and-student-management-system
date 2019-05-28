@@ -9,7 +9,7 @@
 		echo "Not connected to server";
 	}
 	
-	 if(!mysqli_select_db($con,'dbms_project'))
+	 if(!mysqli_select_db($con,'dbms'))
 	 {
 	 	echo 'Database Not Selected';
 	}
@@ -41,7 +41,7 @@
 	for($i=0;$i<=5;$i++){
 		$j=$i+1;
 		if($value[$i]!=0)
-		{$sql1="INSERT INTO teacher_courses(t_id,sem,course,totalclasses)VALUES('$t_id','$j','$value[$i]','$k')";
+		{$sql1="INSERT INTO teacher_courses(t_id,c_id,classes_taken_by_a_teacher)VALUES('$t_id','$value[$i]','$k')";
 		mysqli_query($con,$sql1);}
 	}
 	if(mysqli_query($con,$sql))

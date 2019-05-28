@@ -8,10 +8,10 @@
 <body>
 
 <div id="myDIV" class="header">
-  <h2 style="margin:5px">sem<?php echo $_GET['sem'] ?> and course<?php echo $_GET['course'] ?></h2>
+  <h2 style="margin:5px">sem=<?php echo $_GET['sem'] ?> and courseid=<?php echo $_GET['courseid'] ?>and coursename=<?php echo $_GET['coursename'] ?></h2>
 </div>
 <?php
-  $dbconnect=mysqli_connect('localhost','root','','dbms_project');
+  $dbconnect=mysqli_connect('localhost','root','','dbms');
   #$i=0;
   if(!$dbconnect)
     echo'error';
@@ -26,12 +26,12 @@
         <button type="submit" name="submit">Logout</button>
          </form>
          <?php
-    $class="select * from sem".$_GET['sem']. " join student3 on scholarno=scholar_number where semester=".$_GET['sem'];
+    $class="select * from student where sem=".$_GET['sem'];
     //echo $class;
     $sql=mysqli_query($dbconnect,$class);
     $array=mysqli_fetch_assoc($sql);
     ?>
-    <form action="studentattendancebackend.php?sem=<?php echo $_GET['sem'];?>&course=<?php echo $_GET['course'];?>" method="post">
+    <form action="studentattendancebackend.php?sem=<?php echo $_GET['sem'];?>&courseid=<?php echo $_GET['courseid'];?>" method="post">
       <table>
         <tr>
           
@@ -55,7 +55,7 @@
             ?></td>
             
               <td><?php
-                echo $array['scholarno'];?>
+                echo $array['s_id'];?>
               </td>
               <td>
                 <input type="hidden" name="tick[]" value="0" >
